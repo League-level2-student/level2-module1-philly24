@@ -2,6 +2,7 @@ package intro_to_array_lists;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,17 +43,21 @@ JPanel panel;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		ArrayList<String> name = new ArrayList<String>();
 		JButton buttonPressed = (JButton) e.getSource();
+		String names;
 		if (buttonPressed==button1) {
-		JOptionPane.showInputDialog("");
+			 names = JOptionPane.showInputDialog("add name");
+		name.add(names);
 		}
 		else {
 			
+			System.out.println();
 		}
 	}
 public static void main(String[] args) {
 	GuestBook guest = new GuestBook();
 	guest.gui();
+	
 }
 }
