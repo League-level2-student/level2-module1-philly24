@@ -11,22 +11,25 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Timer timer;
-
+	GameObject gameobject;
 	GamePanel(){
 		timer = new Timer(1000/60, this);
+		 gameobject = new GameObject(10, 2, 2, 2);
+		 
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		repaint();
+		gameobject.update();
 	} 
 	void startGame() {
 		timer.start();
 	}
 	@Override
 
-	public void paintComponent(Graphics g){
-		g.fillRect(10, 10, 100, 100);
+	public void paintComponent(Graphics graphics){
+		gameobject.draw(graphics);
 	                
 	        }
 

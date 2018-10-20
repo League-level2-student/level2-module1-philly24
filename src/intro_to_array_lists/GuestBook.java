@@ -46,13 +46,17 @@ JPanel panel;
 		ArrayList<String> name = new ArrayList<String>();
 		JButton buttonPressed = (JButton) e.getSource();
 		String names;
+		String message;
 		if (buttonPressed==button1) {
 			 names = JOptionPane.showInputDialog("add name");
 		name.add(names);
 		}
 		else {
-			
-			System.out.println();
+			for (int i = 0; i < name.size(); i++) {
+				message = "Guest #"+i+": "; 
+				JOptionPane.showMessageDialog(null,message);
+			}
+		
 		}
 	}
 public static void main(String[] args) {
