@@ -7,6 +7,7 @@ public class GameObject {
     int y;
     int width;
     int height;
+    boolean up, down, left, right;
     Graphics graphics; 
     GameObject(int x, int y, int width,int height){
     	this.x = x;
@@ -14,11 +15,11 @@ public class GameObject {
     	this.width = width;
     	this.height = height;
     }
+   
     void update() {
-    	
+   
     }
     void draw(Graphics graphics) {
-    	this.graphics = graphics;
-    	graphics.fillRect(10, 10, 100, 100);
+    
     }
 }

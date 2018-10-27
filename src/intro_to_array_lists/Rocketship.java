@@ -1,0 +1,21 @@
+package intro_to_array_lists;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Rocketship extends GameObject{
+	int speed;
+	Rocketship(int x, int y, int width, int height,int speed) {
+		super(x, y, width, height);
+		this.speed=speed;
+		// TODO Auto-generated constructor stub
+	}
+void update() {
+	
+}
+void draw(Graphics graphics) {
+    graphics.setColor(Color.BLUE);
+
+    graphics.fillRect(x, y, width, height);
+}
+}
