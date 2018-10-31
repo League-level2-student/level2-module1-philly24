@@ -10,12 +10,23 @@ public class Rocketship extends GameObject{
 		this.speed=speed;
 		// TODO Auto-generated constructor stub
 	}
-void update() {
-	
-}
-void draw(Graphics graphics) {
-    graphics.setColor(Color.BLUE);
+	void update() {
+		if (up) {
+			y--;
+		}
+		else if (down) {
+			y++;
+		} 
+		else if (left) {
+			x--;
+		}
+		else if (right) {
+			x++;
+		}
+	}
+	void draw(Graphics graphics) {
+		graphics.setColor(Color.BLUE);
 
-    graphics.fillRect(x, y, width, height);
-}
+		graphics.fillRect(x, y, width, height);
+	}
 }

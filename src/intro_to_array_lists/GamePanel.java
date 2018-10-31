@@ -20,10 +20,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
-
+	ObjectManager objectmanager;
 	GamePanel() {
 		timer = new Timer(1000 / 60, this);
 		rocket= new Rocketship(250,700,50,50,5);
+		objectmanager = new ObjectManager(rocket);
 	}
 
 	void updateMenuState() {
@@ -31,7 +32,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-		rocket.update();
+		objectmanager.update();
+		
 	}
 
 	void updateEndState() {
@@ -42,13 +44,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		graphics.setColor(Color.BLUE);
 
 		graphics.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+		
 	}
 
 	void drawGameState(Graphics graphics) {
 		graphics.setColor(Color.BLACK);
 
 		graphics.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-		rocket.draw(graphics);
+		objectmanager.draw(graphics);
 	}
 
 	void drawEndState(Graphics graphics) {
@@ -115,13 +118,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 
-			gameobject.up = true;
+			rocket.up = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			gameobject.down = true;
+			rocket.down = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			gameobject.left = true;
+			rocket.left = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			gameobject.right = true;
+			rocket.right = true;
 		}
 	}
 
@@ -129,13 +132,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			gameobject.up = false;
+			rocket.up = false;
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			gameobject.down = false;
+			rocket.down = false;
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			gameobject.left = false;
+			rocket.left = false;
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			gameobject.right = false;
+			rocket.right = false;
 		}
 	}
 }
