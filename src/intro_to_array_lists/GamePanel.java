@@ -86,7 +86,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 
 	public void paintComponent(Graphics graphics) {
-		rocket.draw(graphics);
+		
 		if (currentState == MENU_STATE) {
 
 			drawMenuState(graphics);
@@ -105,16 +105,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
-		/*if (currentState > END_STATE) {
+		if (e.getKeyChar()==KeyEvent.VK_ENTER) {
+			
+			if (currentState > END_STATE) {
 
-			currentState = MENU_STATE;
+				currentState = MENU_STATE;
 
-		} else {
-			currentState++;
-		}*/
-		if (e.getKeyCode()==KeyEvent.VK_SPACE) {
-			objectmanager.addProjectile(new Projectile(rocket.x, rocket.y, 10, 10));
+			} else {
+				currentState++;
+			}	
+		}
+	
+		if (e.getKeyChar()==KeyEvent.VK_SPACE) {
+			objectmanager.addProjectile(new Projectile(rocket.x+20, rocket.y+20, 10, 10));
 		}
 	}
 

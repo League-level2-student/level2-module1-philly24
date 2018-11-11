@@ -1,6 +1,7 @@
 package intro_to_array_lists;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Projectile extends GameObject{
 	int speed = 10;
@@ -8,7 +9,7 @@ public class Projectile extends GameObject{
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
-	void draw() {
+	void draw(Graphics graphics) {
 		graphics.setColor(Color.RED);
 
 		graphics.fillRect(x, y, width, height);	
