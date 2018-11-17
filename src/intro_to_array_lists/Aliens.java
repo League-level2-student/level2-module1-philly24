@@ -10,6 +10,7 @@ public class Aliens extends GameObject {
 		// TODO Auto-generated constructor stub
 	}
 void update() {
+	super.update();
 	y++;
 }
 void draw(Graphics graphics) {

@@ -1,6 +1,7 @@
 package intro_to_array_lists;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class GameObject {
 	int x;
@@ -10,7 +11,9 @@ public class GameObject {
 	boolean up, down, left, right;
 	boolean isAlive=true;
 	Graphics graphics; 
+	Rectangle collisionBox;
 	GameObject(int x, int y, int width,int height){
+		collisionBox = new Rectangle(); 
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -18,7 +21,7 @@ public class GameObject {
 	}
 
 	void update() {
-
+		collisionBox.setBounds(x, y, width, height);
 	}
 	void draw(Graphics graphics) {
 

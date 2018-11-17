@@ -15,6 +15,7 @@ public class Projectile extends GameObject{
 		graphics.fillRect(x, y, width, height);	
 	}
 	void update() {
+		super.update();
 		int num=y-speed;
 		if (y>0) {
 			isAlive=false;	
