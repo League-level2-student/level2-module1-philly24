@@ -1,12 +1,14 @@
 package intro_to_array_lists;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -14,6 +16,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer timer;
 	GameObject gameobject;
 	Rocketship rocket;
+	Font titleFont;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -25,10 +28,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		timer = new Timer(1000 / 60, this);
 		rocket= new Rocketship(250,700,50,50,5);
 		objectmanager = new ObjectManager(rocket);
+		titleFont = new Font("Arial",Font.PLAIN,48);
 	}
 
 	void updateMenuState() {
-
+		
 	}
 
 	void updateGameState() {
@@ -42,13 +46,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateEndState() {
-
+	
+		
+		
 	}
 
 	void drawMenuState(Graphics graphics) {
 		graphics.setColor(Color.BLUE);
-
 		graphics.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+		graphics.setColor(Color.YELLOW);
+		graphics.setFont(titleFont);
+		graphics.drawString("League Invaders " , 80, 100);
+		graphics.drawString("press enter to play", 60, 400);
+		
 		
 	}
 
@@ -60,9 +70,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawEndState(Graphics graphics) {
-		graphics.setColor(Color.RED);
-
+		graphics.setColor(Color.RED);		
 		graphics.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+		graphics.setFont(titleFont);
+		graphics.setColor(Color.BLACK);
+		graphics.drawString("Game Over", 80, 80);
+		graphics.drawString("Press enter to replay", 80, 200);
+		graphics.drawString("your score is "+ objectmanager.getscore(), 80,200 );
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -115,10 +129,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			if (currentState > END_STATE) {
 
 				currentState = MENU_STATE;
-
-			} else {
+				
+			}
+			else if (currentState==END_STATE) {
+				rocket = new Rocketship(250,700,50,50,5);
+				objectmanager = new ObjectManager(rocket);
+			}
+			else {
 				currentState++;
 			}	
+			 
 		}
 	
 		if (e.getKeyChar()==KeyEvent.VK_SPACE) {
