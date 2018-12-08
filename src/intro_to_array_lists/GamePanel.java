@@ -7,7 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -17,6 +20,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	GameObject gameobject;
 	Rocketship rocket;
 	Font titleFont;
+	public static BufferedImage alienImg;
+
+    public static BufferedImage rocketImg;
+
+    public static BufferedImage bulletImg;
+
+    public static BufferedImage spaceImg;
+
+
+
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -29,6 +42,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		rocket= new Rocketship(250,700,50,50,5);
 		objectmanager = new ObjectManager(rocket);
 		titleFont = new Font("Arial",Font.PLAIN,48);
+		try {
+
+            alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
+
+            rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+
+            bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
+
+            spaceImg = ImageIO.read(this.getClass().getResourceAsStream("space.png"));
+
+    } catch (IOException e) {
+
+            // TODO Auto-generated catch block
+
+            e.printStackTrace();
+
+    }
 	}
 
 	void updateMenuState() {
@@ -63,9 +93,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawGameState(Graphics graphics) {
-		graphics.setColor(Color.BLACK);
-
-		graphics.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	
+		
+		graphics.drawImage(GamePanel.spaceImg,0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT,null);
 		objectmanager.draw(graphics);
 	}
 
@@ -75,7 +105,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		graphics.setFont(titleFont);
 		graphics.setColor(Color.BLACK);
 		graphics.drawString("Game Over", 80, 80);
-		graphics.drawString("Press enter to replay", 80, 200);
+
 		graphics.drawString("your score is "+ objectmanager.getscore(), 80,200 );
 	}
 
@@ -137,7 +167,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			}
 			else {
 				currentState++;
-			}	
+			}
 			 
 		}
 	

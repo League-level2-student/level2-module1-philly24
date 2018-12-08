@@ -10,9 +10,10 @@ public class Projectile extends GameObject{
 		// TODO Auto-generated constructor stub
 	}
 	void draw(Graphics graphics) {
-		graphics.setColor(Color.RED);
+		graphics.drawImage(GamePanel.bulletImg, x, y, width, height, null);
 
-		graphics.fillRect(x, y, width, height);	
+
+
 	}
 	void update() {
 		y--;

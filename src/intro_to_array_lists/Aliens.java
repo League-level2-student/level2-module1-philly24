@@ -14,8 +14,9 @@ void update() {
 	y++;
 }
 void draw(Graphics graphics) {
-	graphics.setColor(Color.YELLOW);
+	graphics.drawImage(GamePanel.alienImg, x, y, width, height, null);
 
-	graphics.fillRect(x, y, width, height);
+
+
 }
 }
